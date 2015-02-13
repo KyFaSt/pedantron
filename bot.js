@@ -8,7 +8,8 @@ require('string').extendPrototype();
 var config = require('./config.js');
 var T = new Twit(config);
 
-var queries = ['you could try ', 'you should try ', 'why don\'t you try '];
+var queries = ['you could try ', 'you should try ', 'why don\'t you try ',
+  'I\'d try ', 'have you tried ', 'did you try ', 'you might try '];
 
 var pedantries = ['I guess. Or try', 'Personally, I\'d try', 'IMHO, try', 'UGH, no. instead try', 'I disagree. You should try'];
 
