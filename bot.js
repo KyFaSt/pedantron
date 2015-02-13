@@ -33,7 +33,7 @@ var getPedantic = function(tweet, match) {
                                          pedantry: _.sample(pedantries),
                                          original: original});
 
-  T.post('statuses/update', { status: pedanticTweet, in_reply_to_status_id: tweet.id }, function(e, d) {
+  T.post('statuses/update', { status: pedanticTweet, in_reply_to_status_id: tweet.id_str }, function(e, d) {
     if (e) {
       console.log(e);
     } else {
