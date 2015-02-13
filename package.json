@@ -2,10 +2,6 @@
   "name": "pedantron",
   "version": "0.0.1",
   "description": "A real jerk.",
-  "main": "bot.js",
-  "scripts": {
-    "start": "node bot.js"
-  },
   "dependencies": {
     "twit": "1.1.19",
     "dotenv": "0.5.1",
