@@ -26,7 +26,7 @@ var getPedantic = function(tweet, match) {
   var original = text.substr(matchEndIndex);
 
   var names = ["@" + tweet.user.screen_name].concat(text.match(/@[\w]+/g));
-  names = _.without("@" + config.screen_name);
+  names = _.without(names, "@" + config.screen_name);
   names = _.uniq(names);
 
   var pedanticTweet = template.template({names: names.join(" "),
