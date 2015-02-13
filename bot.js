@@ -83,9 +83,15 @@ var ensureFollowing = function(user, onFollowing) {
   });
 };
 
+var isRetweetOfMe = function(tweet) {
+  var retweet = tweet.retweeted_status;
+  return retweet && retweet.user.screen_name == config.screen_name;
+};
 
 userStream.on('tweet', function(tweet) {
   ensureFollowing(tweet.user, function() {
+    if (isRetweetOfMe(tweet)) { return; }
+
     var text = tweet.text.toLowerCase();
     var match = _.find(queries, function(query) {
       return text.contains(query);
