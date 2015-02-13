@@ -10,7 +10,8 @@
     "twit": "1.1.19",
     "dotenv": "0.5.1",
     "underscore": "1.7.0",
-    "string": "3.0.0"
+    "string": "3.0.0",
+    "express": "~4.9.x"
   },
   "engines": {
     "node": "0.12.x"

@@ -94,8 +94,14 @@ userStream.on('tweet', function(tweet) {
 });
 
 
-// // Try to retweet something as soon as we run the program...
-// getPedantic();
-// // ...and then every hour after that. Time here is in milliseconds, so
-// // 1000 ms = 1 second, 1 sec * 60 = 1 min, 1 min * 60 = 1 hour --> 1000 * 60 * 60
-// setInterval(getPedantic, 1000 * 60 * 60);
+var express = require('express');
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+app.get('/', function(request, response) {
+  response.send('Hello World!');
+});
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
+});
