@@ -12,17 +12,20 @@ var queries = ['you could try ', 'you should try ', 'why don\'t you try '];
 
 var pedantries = ['I guess. Or try', 'Personally, I\'d try', 'IMHO, try', 'UGH, no. instead try', 'I disagree. You should try'];
 
-var template = "@{{name}} {{pedantry}} {{original}}";
+var template = "{{names}} {{pedantry}} {{original}}";
 
 var getPedantic = function(tweet, match) {
   var text = tweet.text;
+  console.log(tweet.user.screen_name + ": " + text);
+
   var regex = new RegExp(match, 'i');
   var matchStartIndex = text.search(regex);
   var matchEndIndex = matchStartIndex + match.length;
 
   var original = text.substr(matchEndIndex);
 
-  var pedanticTweet = template.template({name: tweet.user.screen_name,
+  var names = ["@" + tweet.user.screen_name].concat(text.match(/@[\w]+/g));
+  var pedanticTweet = template.template({names: names.join(" "),
                                          pedantry: _.sample(pedantries),
                                          original: original});
 
@@ -36,7 +39,7 @@ var getPedantic = function(tweet, match) {
 };
 
 
-var userStream = T.stream('user');
+var userStream = T.stream('user', { replies: 'all' });
 
 userStream.on('follow', function(event) {
   if (event.source.screen_name == config.screen_name) { return; }
