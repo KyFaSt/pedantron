@@ -70,6 +70,9 @@ var ensureFollowing = function(user, onFollowing) {
     if (e) {
       console.log(e);
     } else {
+      console.log("relationship:", d.relationship.source.screen_name, d.relationship.target.screen_name);
+      console.log("following", d.relationship.target.following);
+      console.log("followed_by", d.relationship.target.followed_by);
       if (d.relationship.target.following) {
         onFollowing(user);
       } else {
